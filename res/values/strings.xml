@@ -1,5 +1,18 @@
 <resources>
 
     <string name="app_name">CakeUI</string>
-
+    
+    
+    <!-- Dialog -->
+    
+    <string name="dialog_confirmation">Confirmação</string>
+    <string name="dialog_information">Informação</string>
+    
+    <string name="button_dialog">OK</string>
+    
+    <string name="message_dialog_confirmation">Você tem certeza dessa operação?</string>
+    <string name="message_dialog_error">Erro ao concluir a operação.</string>
+	<string name="message_dialog_information"></string>
+    <string name="message_dialog_success">Operação concluída com sucesso!</string>
+	
 </resources>
