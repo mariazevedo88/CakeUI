@@ -1,16 +1,28 @@
 package com.cakeui.generic.activity;
 
 import android.os.Bundle;
-import android.view.MenuItem;
-import android.view.MenuItem.OnMenuItemClickListener;
 
 import com.actionbarsherlock.app.ActionBar;
-import com.actionbarsherlock.app.SherlockActivity;
+import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.actionbarsherlock.view.Menu;
+import com.actionbarsherlock.view.MenuItem;
+import com.actionbarsherlock.view.MenuItem.OnMenuItemClickListener;
 import com.cakeui.R;
 import com.cakeui.utils.PagesOpen;
 
-public class GenericActivity extends SherlockActivity{
+/**
+ * 
+ * @author Mariana Azevedo
+ * @email mariana@bsi.ufla.br
+ * 
+ * @author Sarah Caixeta
+ * @email caixeta.sarah@gmail.com
+ * 
+ * Class that implements a generic activity.
+ *
+ */
+
+public class GenericActivity extends SherlockFragmentActivity{
 
 	private ActionBar sherlockActionBar;
 	private Menu menu;

@@ -7,6 +7,18 @@ import android.view.ViewGroup;
 
 import com.actionbarsherlock.app.SherlockFragment;
 
+/**
+ * 
+ * @author Mariana Azevedo
+ * @email mariana@bsi.ufla.br
+ * 
+ * @author Sarah Caixeta
+ * @email caixeta.sarah@gmail.com
+ *
+ *
+ * Class that implements a generic fragment.
+ */
+
 public class GenericFragment extends SherlockFragment{
 	
 	private int layoutID;
