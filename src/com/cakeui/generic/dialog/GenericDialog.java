@@ -108,6 +108,9 @@ public class GenericDialog extends SherlockDialogFragment{
 			
 			@Override
 			public void onClick(View v) {
+				
+				if (sherlockFragmentManager != null)
+				
 				dismiss();
 			}
 		});
@@ -152,6 +155,9 @@ public class GenericDialog extends SherlockDialogFragment{
 			
 			@Override
 			public void onClick(View v) {
+				
+				if (sherlockFragmentManager != null)
+				
 				dismiss();
 			}
 		});
