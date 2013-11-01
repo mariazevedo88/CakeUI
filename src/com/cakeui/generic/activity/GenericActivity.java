@@ -1,6 +1,7 @@
 package com.cakeui.generic.activity;
 
 import android.os.Bundle;
+import android.support.v4.app.FragmentTransaction;
 
 import com.actionbarsherlock.app.ActionBar;
 import com.actionbarsherlock.app.SherlockFragmentActivity;
@@ -8,6 +9,7 @@ import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuItem;
 import com.actionbarsherlock.view.MenuItem.OnMenuItemClickListener;
 import com.cakeui.R;
+import com.cakeui.generic.fragment.GenericFragment;
 import com.cakeui.utils.PagesOpen;
 
 /**
@@ -92,24 +94,46 @@ public class GenericActivity extends SherlockFragmentActivity{
 	
 	@Override
 	public void onBackPressed() {
+		super.onBackPressed();
 		
-		if (pagesOpen == PagesOpen.JUST_ACTIVITY)
-			super.onBackPressed();
-		else if (pagesOpen == PagesOpen.FRAGMENT_ONE){
-			super.onBackPressed();
+		if (pagesOpen == PagesOpen.FRAGMENT_ONE){
 			setPagesOpen(PagesOpen.JUST_ACTIVITY);
 		} else if (pagesOpen == PagesOpen.FRAGMENT_TWO){
-			super.onBackPressed();
 			setPagesOpen(PagesOpen.FRAGMENT_ONE);
 		} else if (pagesOpen == PagesOpen.FRAGMENT_THREE){
-			super.onBackPressed();
 			setPagesOpen(PagesOpen.FRAGMENT_TWO);
 		} else if (pagesOpen == PagesOpen.FRAGMENT_FOUR){
-			super.onBackPressed();
 			setPagesOpen(PagesOpen.FRAGMENT_THREE);
 		} else if (pagesOpen == PagesOpen.FRAGMENT_FIVE){
-			super.onBackPressed();
 			setPagesOpen(PagesOpen.FRAGMENT_FOUR);
+		}
+	}
+	
+	/**
+	 * Replaces the content of the container view with the new layout.
+	 * @param containerViewId - ID of the FrameLayout in which the fragment will be added.
+	 * @param fragmentID - ID of the root Layout of the fragment xml. 
+	 */
+	public void addFragmentToScreen(int containerViewId, int fragmentID) {
+
+		GenericFragment newFragment = (GenericFragment) getSupportFragmentManager().findFragmentById(fragmentID);
+
+		if (newFragment == null){
+			newFragment = new GenericFragment(false);
+	
+			/* Controla se uma instância de um fragment é mantida através do re-build de uma activity.  
+			 * Essa solução só é permitida se não há fragments na backstack, cujo caso se aplica e
+			 * corrige o problema de instanciação de fragments, que abortava o app*/
+			newFragment.setRetainInstance(true);
+			
+			FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+			fragmentTransaction.replace(containerViewId, newFragment, newFragment.getFragmentTag());
+			fragmentTransaction.addToBackStack(null);
+	
+			/* permite o commit ser executado após o estado de uma activity estiver salvo.
+			 * Como a instância do fragment está fixa na activity, não teremos problema
+			 * ao recuperar o estado da activity*/
+			fragmentTransaction.commitAllowingStateLoss(); 
 		}
 	}
 	
