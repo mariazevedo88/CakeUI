@@ -1,6 +1,7 @@
 package com.cakeui.generic.fragment;
 
 import android.os.Bundle;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -25,11 +26,14 @@ public class GenericFragment extends SherlockFragment{
 	private int layoutID;
 	private String previousFragmentTag;
 	private String mainFragmentTag;
+	
+	private boolean backToMain;
 
 	public GenericFragment(){}
 
-	public GenericFragment(int layoutID){
+	public GenericFragment(int layoutID, boolean backToMain){
 		this.layoutID = layoutID;
+		this.backToMain = backToMain;
 	}
 
 	@Override
@@ -56,7 +60,7 @@ public class GenericFragment extends SherlockFragment{
 		GenericFragment newFragment = (GenericFragment) getFragmentManager().findFragmentById(fragmentID);
 	
 		if (newFragment == null){
-			newFragment = new GenericFragment(fragmentID);
+			newFragment = new GenericFragment(fragmentID, false);
 	
 			/* Controla se uma instância de um fragment é mantida através do re-build de uma activity.  
 			 * Essa solução só é permitida se não há fragments na backstack, cujo caso se aplica e
@@ -72,6 +76,10 @@ public class GenericFragment extends SherlockFragment{
 			 * ao recuperar o estado da activity*/
 			fragmentTransaction.commitAllowingStateLoss(); 
 		}
+	}
+	
+	public FragmentManager getSherlockFragmentManager(){
+		return getFragmentManager();
 	}
 	
 	/**
@@ -112,11 +120,11 @@ public class GenericFragment extends SherlockFragment{
 	 * Sets true, if your Fragments' behavior is lead the user to the Main Fragment's page
 	 * after the operation is finished, and false if your Fragments' behavior is back to 
 	 * the previous Fragment's page after the operation is finished. 
-	 * @param flag
+	 * @param backtoMain
 	 * @return
 	 */
-	public boolean isBackToMainFragment(boolean flag){
-		return flag;
+	public boolean isBackToMainFragment(){
+		return backToMain;
 	}
 	
 }

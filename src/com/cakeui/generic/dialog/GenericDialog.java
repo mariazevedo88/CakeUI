@@ -4,7 +4,6 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
-import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -13,7 +12,9 @@ import android.widget.Button;
 import com.actionbarsherlock.app.SherlockDialogFragment;
 import com.cakeui.R;
 import com.cakeui.generic.activity.GenericActivity;
+import com.cakeui.generic.fragment.GenericFragment;
 import com.cakeui.utils.DialogType;
+import com.cakeui.utils.PagesOpen;
 
 /**
  * Class that implements generic dialogs. 
@@ -31,7 +32,7 @@ public class GenericDialog extends SherlockDialogFragment{
 	
 	private GenericActivity activity;
 	
-	private FragmentManager sherlockFragmentManager;
+	private GenericFragment fragment;
 	
 	public GenericDialog(){}
 	
@@ -41,12 +42,10 @@ public class GenericDialog extends SherlockDialogFragment{
 		this.activity = activity;
 	}
 	
-	public GenericDialog (Context context, DialogType dialogType, GenericActivity activity, 
-			FragmentManager sherlockFragmentManager){
+	public GenericDialog (Context context, DialogType dialogType, GenericFragment fragment){
 		this.context = context;
 		this.dialogType = dialogType;
-		this.activity = activity;
-		this.sherlockFragmentManager = sherlockFragmentManager;
+		this.fragment = fragment;
 	}
 
 	@Override
@@ -109,7 +108,19 @@ public class GenericDialog extends SherlockDialogFragment{
 			@Override
 			public void onClick(View v) {
 				
-				if (sherlockFragmentManager != null)
+				if (fragment != null){
+					
+					GenericFragment supportFragment = 
+							(GenericFragment) fragment.getSherlockFragmentManager().
+							findFragmentByTag(fragment.getFragmentTag());
+					
+					GenericActivity genericActivity = (GenericActivity) supportFragment.getActivity();
+					
+					if (fragment.isBackToMainFragment())
+						genericActivity.setPagesOpen(PagesOpen.JUST_ACTIVITY);
+					
+					genericActivity.onBackPressed();
+				}
 				
 				dismiss();
 			}
@@ -156,7 +167,19 @@ public class GenericDialog extends SherlockDialogFragment{
 			@Override
 			public void onClick(View v) {
 				
-				if (sherlockFragmentManager != null)
+				if (fragment != null){
+					
+					GenericFragment supportFragment = 
+							(GenericFragment) fragment.getSherlockFragmentManager().
+							findFragmentByTag(fragment.getFragmentTag());
+					
+					GenericActivity genericActivity = (GenericActivity) supportFragment.getActivity();
+					
+					if (fragment.isBackToMainFragment())
+						genericActivity.setPagesOpen(PagesOpen.JUST_ACTIVITY);
+					
+					genericActivity.onBackPressed();
+				}
 				
 				dismiss();
 			}
