@@ -94,19 +94,19 @@ public class GenericActivity extends SherlockFragmentActivity{
 	
 	@Override
 	public void onBackPressed() {
-		super.onBackPressed();
 		
-		if (pagesOpen == PagesOpen.FRAGMENT_ONE){
+		if (pagesOpen == PagesOpen.FRAGMENT_ONE)
 			setPagesOpen(PagesOpen.JUST_ACTIVITY);
-		} else if (pagesOpen == PagesOpen.FRAGMENT_TWO){
+		else if (pagesOpen == PagesOpen.FRAGMENT_TWO)
 			setPagesOpen(PagesOpen.FRAGMENT_ONE);
-		} else if (pagesOpen == PagesOpen.FRAGMENT_THREE){
+		else if (pagesOpen == PagesOpen.FRAGMENT_THREE)
 			setPagesOpen(PagesOpen.FRAGMENT_TWO);
-		} else if (pagesOpen == PagesOpen.FRAGMENT_FOUR){
+		else if (pagesOpen == PagesOpen.FRAGMENT_FOUR)
 			setPagesOpen(PagesOpen.FRAGMENT_THREE);
-		} else if (pagesOpen == PagesOpen.FRAGMENT_FIVE){
+		else if (pagesOpen == PagesOpen.FRAGMENT_FIVE)
 			setPagesOpen(PagesOpen.FRAGMENT_FOUR);
-		}
+	
+		super.onBackPressed();
 	}
 	
 	/**
