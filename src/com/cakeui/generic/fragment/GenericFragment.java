@@ -26,14 +26,17 @@ public class GenericFragment extends SherlockFragment{
 	private String previousFragmentTag;
 	private String mainFragmentTag;
 	
-	private boolean backToMain;
+	private boolean mainFragment;
 
 	public GenericFragment(){}
-
-	public GenericFragment(boolean backToMain){
-		this.backToMain = backToMain;
+	
+	@Override
+	public void setArguments(Bundle args) {
+		super.setArguments(args);
+		
+		this.mainFragment = args.getBoolean("mainFragment");
 	}
-
+	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
@@ -71,7 +74,7 @@ public class GenericFragment extends SherlockFragment{
 	 * if you want that in the end of operations, the iteration with the positive option
 	 * in dialogs lead your user to the Main Fragment's page.
 	 */
-	public void setMainFragment(String tag){
+	public void setMainFragmentTag(String tag){
 		this.mainFragmentTag = tag;
 	}
 	
@@ -79,7 +82,7 @@ public class GenericFragment extends SherlockFragment{
 	 * Get the operation's Main Fragment.
 	 * @return
 	 */
-	public String getMainFragment(){
+	public String getMainFragmentTag(){
 		return mainFragmentTag;
 	}
 	
@@ -90,16 +93,18 @@ public class GenericFragment extends SherlockFragment{
 	 * @param backtoMain
 	 * @return
 	 */
-	public boolean isBackToMainFragment(){
-		return backToMain;
+	public boolean isMainFragment(){
+		return mainFragment;
 	}
 	
 	/**
 	 * Replaces the content of the container view with the new layout.
 	 * @param containerViewId - ID of the FrameLayout in which the fragment will be added.
 	 * @param fragmentID - ID of the root Layout of the fragment xml. 
+	 * @throws IllegalAccessException 
+	 * @throws java.lang.InstantiationException 
 	 */
-	protected void addFragment(int containerViewID, int fragmentID){
-		((GenericActivity) this.getActivity()).addFragmentToScreen(containerViewID, fragmentID);
+	protected void addFragment(int containerViewID, int fragmentID, Class<? extends GenericFragment> newFragment, boolean mainFragment) throws java.lang.InstantiationException, IllegalAccessException{
+		((GenericActivity) this.getActivity()).addFragmentToScreen(containerViewID, fragmentID, newFragment, mainFragment);
 	}
 }

@@ -116,7 +116,7 @@ public class GenericDialog extends SherlockDialogFragment{
 					
 					GenericActivity genericActivity = (GenericActivity) supportFragment.getActivity();
 					
-					if (fragment.isBackToMainFragment())
+					if (fragment.isMainFragment())
 						genericActivity.setPagesOpen(PagesOpen.JUST_ACTIVITY);
 					
 					genericActivity.onBackPressed();
@@ -175,7 +175,7 @@ public class GenericDialog extends SherlockDialogFragment{
 					
 					GenericActivity genericActivity = (GenericActivity) supportFragment.getActivity();
 					
-					if (fragment.isBackToMainFragment())
+					if (fragment.isMainFragment())
 						genericActivity.setPagesOpen(PagesOpen.JUST_ACTIVITY);
 					
 					genericActivity.onBackPressed();

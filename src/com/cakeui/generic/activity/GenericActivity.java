@@ -113,14 +113,20 @@ public class GenericActivity extends SherlockFragmentActivity{
 	 * Replaces the content of the container view with the new layout.
 	 * @param containerViewId - ID of the FrameLayout in which the fragment will be added.
 	 * @param fragmentID - ID of the root Layout of the fragment xml. 
+	 * @throws IllegalAccessException 
+	 * @throws InstantiationException 
 	 */
-	public void addFragmentToScreen(int containerViewId, int fragmentID) {
+	public void addFragmentToScreen(int containerViewId, int fragmentID, Class<? extends GenericFragment> fragmentClass, boolean mainFragment) throws InstantiationException, IllegalAccessException {
 
 		GenericFragment newFragment = (GenericFragment) getSupportFragmentManager().findFragmentById(fragmentID);
 
 		if (newFragment == null){
-			newFragment = new GenericFragment(false);
-	
+			newFragment = fragmentClass.newInstance();
+			
+			Bundle parameters = new Bundle();
+			parameters.putBoolean("mainFragment", mainFragment);
+			newFragment.setArguments(parameters);
+			
 			/* Controla se uma instância de um fragment é mantida através do re-build de uma activity.  
 			 * Essa solução só é permitida se não há fragments na backstack, cujo caso se aplica e
 			 * corrige o problema de instanciação de fragments, que abortava o app*/
