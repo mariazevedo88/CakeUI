@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- Author: Mariana Azevedo -->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
+    
+    <TextView android:id="@+id/textView_error"
+        android:layout_width="wrap_content"
+        android:layout_height="0dip"
+        android:layout_weight="1"
+		android:layout_gravity="center_vertical|center_horizontal"
+		android:textSize="20sp" 
+		android:text="@string/message_dialog_error"
+		android:textColor="@color/abs__background_holo_light" />
+        
+	<Button android:id="@+id/button_error"
+	    android:contentDescription="@string/message_dialog_error"
+	    android:text="@string/button_dialog_ok"
+	    android:layout_width="80dp"
+	    android:layout_height="73dp"
+		android:layout_gravity="center_horizontal"/>
+    
+
+</LinearLayout>
