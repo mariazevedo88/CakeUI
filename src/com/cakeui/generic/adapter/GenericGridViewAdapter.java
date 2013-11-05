@@ -46,16 +46,18 @@ public class GenericGridViewAdapter extends BaseAdapter{
 		if (convertView == null){
 			
 			LayoutInflater inflater = (LayoutInflater) this.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-			convertView = inflater.inflate(R.layout.activity_gridview, parent, false);
+			convertView = inflater.inflate(R.layout.activity_gridview_items, parent, false);
 			
 			viewHolder = new ViewHolder();
+			
+			viewHolder.itemsNamesTextView = (TextView) convertView.findViewById(R.id.grid_TextView);
+			convertView.setTag(viewHolder);
 			
 		}else{
 			viewHolder = (ViewHolder) convertView.getTag();
 		}
-		viewHolder.itemsNamesTextView = (TextView) convertView.findViewById(R.id.grid_TextView);
 		viewHolder.itemsNamesTextView.setText(itemsNamesArray.get(position));
-		viewHolder.itemsNamesTextView.setCompoundDrawables(null, context.getResources().getDrawable(itemsIconsArray.get(position)), 
+		viewHolder.itemsNamesTextView.setCompoundDrawablesWithIntrinsicBounds(null, context.getResources().getDrawable(itemsIconsArray.get(position)), 
 				null, null);
 		
 		return convertView;
