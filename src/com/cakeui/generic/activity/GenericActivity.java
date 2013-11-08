@@ -10,7 +10,7 @@ import com.actionbarsherlock.view.MenuItem;
 import com.actionbarsherlock.view.MenuItem.OnMenuItemClickListener;
 import com.cakeui.R;
 import com.cakeui.generic.fragment.GenericFragment;
-import com.cakeui.utils.PagesOpen;
+import com.cakeui.utils.enums.PagesOpen;
 
 /**
  * 
@@ -54,7 +54,7 @@ public class GenericActivity extends SherlockFragmentActivity{
 	}
 	
 	private void actionBarItemsListeners (Menu menu){
-		
+
 		MenuItem menuLogoff = (MenuItem) menu.findItem(R.id.menu_logoff);
 		menuLogoff.setOnMenuItemClickListener(new OnMenuItemClickListener() {
 			
