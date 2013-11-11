@@ -1,5 +1,6 @@
 package com.cakeui.generic.activity;
 
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
 
@@ -10,6 +11,8 @@ import com.actionbarsherlock.view.MenuItem;
 import com.actionbarsherlock.view.MenuItem.OnMenuItemClickListener;
 import com.cakeui.R;
 import com.cakeui.generic.fragment.GenericFragment;
+import com.cakeui.utils.CakeBroadcastReceiver;
+import com.cakeui.utils.CakeDataEncapsulation;
 import com.cakeui.utils.PagesOpen;
 
 /**
@@ -29,6 +32,8 @@ public class GenericActivity extends SherlockFragmentActivity{
 	private ActionBar sherlockActionBar;
 	private Menu menu;
 	
+	private CakeBroadcastReceiver cakeBroadcastReceiver;
+	
 	public PagesOpen pagesOpen;
 	
 	@Override
@@ -39,6 +44,16 @@ public class GenericActivity extends SherlockFragmentActivity{
 		sherlockActionBar.setDisplayHomeAsUpEnabled(true);
 		setSherlockActionBar(sherlockActionBar);
 		
+		
+		cakeBroadcastReceiver = new CakeBroadcastReceiver(this);
+		registerReceiver(cakeBroadcastReceiver, new IntentFilter(CakeBroadcastReceiver.CAKE_BROADCAST));
+		
+	}
+	
+	@Override
+	protected void onDestroy() {
+		unregisterReceiver(cakeBroadcastReceiver);
+		super.onDestroy();
 	}
 	
 	@Override
@@ -141,6 +156,23 @@ public class GenericActivity extends SherlockFragmentActivity{
 			 * ao recuperar o estado da activity*/
 			fragmentTransaction.commitAllowingStateLoss(); 
 		}
+	}
+	
+	/**
+	 * Receives an {@link CakeDataEncapsulation} object and make the proper use of its contents.
+	 * @param dataEncapsulation
+	 */
+	public void handleDataFromBroadcast(CakeDataEncapsulation dataEncapsulation){
+		
+		if (dataEncapsulation.getDataType().equals(CakeDataEncapsulation.DataType.NETWORK_STATUS)){
+			String networkStatus = (String) dataEncapsulation.getContent();
+			if (networkStatus.equals(getString(R.string.broadcast_network_up))){
+				//TODO change to green icon
+			} else if (networkStatus.equals(getString(R.string.broadcast_network_down))){
+				//TODO change to gray icon
+			}
+		}
+		
 	}
 	
 }
