@@ -15,5 +15,11 @@
     <string name="message_dialog_error">Error on complete the operation.</string>
 	<string name="message_dialog_information"></string>
     <string name="message_dialog_success">Operation complete with success!</string>
+    
+    <!-- Async Task -->
+	
+	<string name="async_task_logging_online">Logging locally&#8230;</string>
+	<string name="async_task_logging_offline">Logging remotely&#8230;</string>
+	<string name="async_task_checking_updates">Checking updates&#8230;</string>
 	
 </resources>

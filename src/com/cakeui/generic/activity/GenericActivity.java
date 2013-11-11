@@ -9,6 +9,7 @@ import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuItem;
 import com.actionbarsherlock.view.MenuItem.OnMenuItemClickListener;
 import com.cakeui.R;
+import com.cakeui.application.CakeUIApplication;
 import com.cakeui.generic.fragment.GenericFragment;
 import com.cakeui.utils.enums.PagesOpen;
 
@@ -29,6 +30,8 @@ public class GenericActivity extends SherlockFragmentActivity{
 	private ActionBar sherlockActionBar;
 	private Menu menu;
 	
+	private CakeUIApplication cakeuiApp;
+	
 	public PagesOpen pagesOpen;
 	
 	@Override
@@ -38,6 +41,8 @@ public class GenericActivity extends SherlockFragmentActivity{
 		sherlockActionBar = getSupportActionBar();
 		sherlockActionBar.setDisplayHomeAsUpEnabled(true);
 		setSherlockActionBar(sherlockActionBar);
+		
+		cakeuiApp = (CakeUIApplication) getApplication();
 		
 	}
 	
@@ -71,7 +76,6 @@ public class GenericActivity extends SherlockFragmentActivity{
 		return sherlockActionBar;
 	}
 
-
 	public void setSherlockActionBar(ActionBar sherlockActionBar) {
 		this.sherlockActionBar = sherlockActionBar;
 	}
@@ -82,6 +86,10 @@ public class GenericActivity extends SherlockFragmentActivity{
 
 	public void setMenu(Menu menu) {
 		this.menu = menu;
+	}
+	
+	public CakeUIApplication getCakeUIApplication(){
+		return cakeuiApp;
 	}
 
 	public PagesOpen getPagesOpen() {
