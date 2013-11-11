@@ -15,5 +15,9 @@
     <string name="message_dialog_error">Error on complete the operation.</string>
 	<string name="message_dialog_information"></string>
     <string name="message_dialog_success">Operation complete with success!</string>
+    
+     <!-- Broadcast messages -->
+    <string name="broadcast_network_down">Application without access to server.</string>
+    <string name="broadcast_network_up">Application with access to server.</string>
 	
 </resources>
