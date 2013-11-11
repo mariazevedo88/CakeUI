@@ -13,8 +13,8 @@ import com.actionbarsherlock.app.SherlockDialogFragment;
 import com.cakeui.R;
 import com.cakeui.generic.activity.GenericActivity;
 import com.cakeui.generic.fragment.GenericFragment;
-import com.cakeui.utils.DialogType;
-import com.cakeui.utils.PagesOpen;
+import com.cakeui.utils.enums.DialogType;
+import com.cakeui.utils.enums.PagesOpen;
 
 /**
  * Class that implements generic dialogs. 

@@ -1,4 +1,4 @@
-package com.cakeui.utils;
+package com.cakeui.utils.enums;
 
 /**
  * 

@@ -10,10 +10,11 @@ import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuItem;
 import com.actionbarsherlock.view.MenuItem.OnMenuItemClickListener;
 import com.cakeui.R;
+import com.cakeui.application.CakeUIApplication;
 import com.cakeui.generic.fragment.GenericFragment;
+import com.cakeui.utils.enums.PagesOpen;
 import com.cakeui.utils.CakeBroadcastReceiver;
 import com.cakeui.utils.CakeDataEncapsulation;
-import com.cakeui.utils.PagesOpen;
 
 /**
  * 
@@ -32,6 +33,7 @@ public class GenericActivity extends SherlockFragmentActivity{
 	private ActionBar sherlockActionBar;
 	private Menu menu;
 	
+	private CakeUIApplication cakeuiApp;
 	private CakeBroadcastReceiver cakeBroadcastReceiver;
 	
 	public PagesOpen pagesOpen;
@@ -44,6 +46,7 @@ public class GenericActivity extends SherlockFragmentActivity{
 		sherlockActionBar.setDisplayHomeAsUpEnabled(true);
 		setSherlockActionBar(sherlockActionBar);
 		
+		cakeuiApp = (CakeUIApplication) getApplication();
 		
 		cakeBroadcastReceiver = new CakeBroadcastReceiver(this);
 		registerReceiver(cakeBroadcastReceiver, new IntentFilter(CakeBroadcastReceiver.CAKE_BROADCAST));
@@ -69,7 +72,7 @@ public class GenericActivity extends SherlockFragmentActivity{
 	}
 	
 	private void actionBarItemsListeners (Menu menu){
-		
+
 		MenuItem menuLogoff = (MenuItem) menu.findItem(R.id.menu_logoff);
 		menuLogoff.setOnMenuItemClickListener(new OnMenuItemClickListener() {
 			
@@ -86,7 +89,6 @@ public class GenericActivity extends SherlockFragmentActivity{
 		return sherlockActionBar;
 	}
 
-
 	public void setSherlockActionBar(ActionBar sherlockActionBar) {
 		this.sherlockActionBar = sherlockActionBar;
 	}
@@ -97,6 +99,10 @@ public class GenericActivity extends SherlockFragmentActivity{
 
 	public void setMenu(Menu menu) {
 		this.menu = menu;
+	}
+	
+	public CakeUIApplication getCakeUIApplication(){
+		return cakeuiApp;
 	}
 
 	public PagesOpen getPagesOpen() {
