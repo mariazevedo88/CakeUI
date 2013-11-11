@@ -21,5 +21,10 @@
 	<string name="async_task_logging_online">Accesando a aplicação localmente&#8230;</string>
 	<string name="async_task_logging_offline">Acessando a aplicação remotamente&#8230;</string>
 	<string name="async_task_checking_updates">Verificando atualizações&#8230;</string>
+    
+    <!-- Broadcast messages -->
+    
+    <string name="broadcast_network_down">Aplicação sem acesso ao servidor.</string>
+    <string name="broadcast_network_up">Aplicação com acesso ao servidor.</string>
 	
 </resources>

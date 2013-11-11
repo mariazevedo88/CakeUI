@@ -22,4 +22,9 @@
 	<string name="async_task_logging_offline">Logging remotely&#8230;</string>
 	<string name="async_task_checking_updates">Checking updates&#8230;</string>
 	
+    <!-- Broadcast messages -->
+    
+    <string name="broadcast_network_down">Application without access to server.</string>
+    <string name="broadcast_network_up">Application with access to server.</string>
+	
 </resources>
