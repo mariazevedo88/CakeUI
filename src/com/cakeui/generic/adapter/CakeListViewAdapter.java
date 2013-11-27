@@ -11,26 +11,24 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-public class GenericGridViewAdapter extends BaseAdapter{
+public class CakeListViewAdapter<T> extends BaseAdapter{
 
 	private Context context;
-	private List<Integer> itemsIconsArray;
-	private List<String>  itemsNamesArray;
+	List<T> listViewItems;
 	
-	public GenericGridViewAdapter(Context context, List<Integer> itemsIconsArray, List<String> itemsNamesArray) {
+	public CakeListViewAdapter(Context context, List<T> listViewItems){
 		this.context = context;
-		this.itemsIconsArray = itemsIconsArray;
-		this.itemsNamesArray = itemsNamesArray;
+		this.listViewItems = listViewItems;
 	}
 	
 	@Override
 	public int getCount() {
-		return itemsIconsArray.size();
+		return listViewItems.size();
 	}
 
 	@Override
-	public Object getItem(int position) {
-		return itemsIconsArray.get(position);
+	public Object getItem(int index) {
+		return listViewItems.get(index);
 	}
 
 	@Override
@@ -40,30 +38,29 @@ public class GenericGridViewAdapter extends BaseAdapter{
 
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
-		
+
 		ViewHolder viewHolder;
 		
 		if (convertView == null){
 			
 			LayoutInflater inflater = (LayoutInflater) this.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-			convertView = inflater.inflate(R.layout.activity_gridview_items, parent, false);
+			convertView = inflater.inflate(R.layout.activity_listview_items, parent, false);
 			
 			viewHolder = new ViewHolder();
 			
-			viewHolder.itemsNamesTextView = (TextView) convertView.findViewById(R.id.grid_TextView);
+			viewHolder.itemsContentTextView = (TextView) convertView.findViewById(R.id.list_TextView);
 			convertView.setTag(viewHolder);
 			
 		}else{
 			viewHolder = (ViewHolder) convertView.getTag();
 		}
-		viewHolder.itemsNamesTextView.setText(itemsNamesArray.get(position));
-		viewHolder.itemsNamesTextView.setCompoundDrawablesWithIntrinsicBounds(null, context.getResources().getDrawable(itemsIconsArray.get(position)), 
-				null, null);
+		viewHolder.itemsContentTextView.setText(listViewItems.get(position).toString());
 		
 		return convertView;
 	}
 	
 	static class ViewHolder{
-		TextView itemsNamesTextView;
+		TextView itemsContentTextView;
 	}
+
 }

@@ -11,24 +11,26 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-public class GenericListViewAdapter<T> extends BaseAdapter{
+public class CakeGridViewAdapter extends BaseAdapter{
 
 	private Context context;
-	List<T> listViewItems;
+	private List<Integer> itemsIconsArray;
+	private List<String>  itemsNamesArray;
 	
-	public GenericListViewAdapter(Context context, List<T> listViewItems){
+	public CakeGridViewAdapter(Context context, List<Integer> itemsIconsArray, List<String> itemsNamesArray) {
 		this.context = context;
-		this.listViewItems = listViewItems;
+		this.itemsIconsArray = itemsIconsArray;
+		this.itemsNamesArray = itemsNamesArray;
 	}
 	
 	@Override
 	public int getCount() {
-		return listViewItems.size();
+		return itemsIconsArray.size();
 	}
 
 	@Override
-	public Object getItem(int index) {
-		return listViewItems.get(index);
+	public Object getItem(int position) {
+		return itemsIconsArray.get(position);
 	}
 
 	@Override
@@ -38,29 +40,30 @@ public class GenericListViewAdapter<T> extends BaseAdapter{
 
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
-
+		
 		ViewHolder viewHolder;
 		
 		if (convertView == null){
 			
 			LayoutInflater inflater = (LayoutInflater) this.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-			convertView = inflater.inflate(R.layout.activity_listview_items, parent, false);
+			convertView = inflater.inflate(R.layout.activity_gridview_items, parent, false);
 			
 			viewHolder = new ViewHolder();
 			
-			viewHolder.itemsContentTextView = (TextView) convertView.findViewById(R.id.list_TextView);
+			viewHolder.itemsNamesTextView = (TextView) convertView.findViewById(R.id.grid_TextView);
 			convertView.setTag(viewHolder);
 			
 		}else{
 			viewHolder = (ViewHolder) convertView.getTag();
 		}
-		viewHolder.itemsContentTextView.setText(listViewItems.get(position).toString());
+		viewHolder.itemsNamesTextView.setText(itemsNamesArray.get(position));
+		viewHolder.itemsNamesTextView.setCompoundDrawablesWithIntrinsicBounds(null, context.getResources().getDrawable(itemsIconsArray.get(position)), 
+				null, null);
 		
 		return convertView;
 	}
 	
 	static class ViewHolder{
-		TextView itemsContentTextView;
+		TextView itemsNamesTextView;
 	}
-
 }
