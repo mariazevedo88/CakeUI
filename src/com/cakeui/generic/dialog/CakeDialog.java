@@ -11,8 +11,8 @@ import android.widget.Button;
 
 import com.actionbarsherlock.app.SherlockDialogFragment;
 import com.cakeui.R;
-import com.cakeui.generic.activity.GenericActivity;
-import com.cakeui.generic.fragment.GenericFragment;
+import com.cakeui.generic.activity.CakeActivity;
+import com.cakeui.generic.fragment.CakeFragment;
 import com.cakeui.utils.enums.DialogType;
 import com.cakeui.utils.enums.PagesOpen;
 
@@ -24,25 +24,25 @@ import com.cakeui.utils.enums.PagesOpen;
  *
  */
 
-public class GenericDialog extends SherlockDialogFragment{
+public class CakeDialog extends SherlockDialogFragment{
 
 	private Context context;
 	
 	private DialogType dialogType;
 	
-	private GenericActivity activity;
+	private CakeActivity activity;
 	
-	private GenericFragment fragment;
+	private CakeFragment fragment;
 	
-	public GenericDialog(){}
+	public CakeDialog(){}
 	
-	public GenericDialog(Context context, DialogType dialogType, GenericActivity activity){
+	public CakeDialog(Context context, DialogType dialogType, CakeActivity activity){
 		this.context = context;
 		this.dialogType = dialogType;
 		this.activity = activity;
 	}
 	
-	public GenericDialog (Context context, DialogType dialogType, GenericFragment fragment){
+	public CakeDialog (Context context, DialogType dialogType, CakeFragment fragment){
 		this.context = context;
 		this.dialogType = dialogType;
 		this.fragment = fragment;
@@ -110,11 +110,11 @@ public class GenericDialog extends SherlockDialogFragment{
 				
 				if (fragment != null){
 					
-					GenericFragment supportFragment = 
-							(GenericFragment) fragment.getSherlockFragmentManager().
+					CakeFragment supportFragment = 
+							(CakeFragment) fragment.getSherlockFragmentManager().
 							findFragmentByTag(fragment.getFragmentTag());
 					
-					GenericActivity genericActivity = (GenericActivity) supportFragment.getActivity();
+					CakeActivity genericActivity = (CakeActivity) supportFragment.getActivity();
 					
 					if (fragment.isMainFragment())
 						genericActivity.setPagesOpen(PagesOpen.JUST_ACTIVITY);
@@ -169,11 +169,11 @@ public class GenericDialog extends SherlockDialogFragment{
 				
 				if (fragment != null){
 					
-					GenericFragment supportFragment = 
-							(GenericFragment) fragment.getSherlockFragmentManager().
+					CakeFragment supportFragment = 
+							(CakeFragment) fragment.getSherlockFragmentManager().
 							findFragmentByTag(fragment.getFragmentTag());
 					
-					GenericActivity genericActivity = (GenericActivity) supportFragment.getActivity();
+					CakeActivity genericActivity = (CakeActivity) supportFragment.getActivity();
 					
 					if (fragment.isMainFragment())
 						genericActivity.setPagesOpen(PagesOpen.JUST_ACTIVITY);

@@ -4,12 +4,12 @@ import android.app.Application;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 
-public class CakeUIApplication extends Application{
+public class CakeApplication extends Application{
 
-	private static CakeUIApplication instance;
+	private static CakeApplication instance;
 	private ConnectivityManager connectivityManager; 
 	
-	public CakeUIApplication(){
+	public CakeApplication(){
 		super();
 		if (instance == null)
 			instance = this;

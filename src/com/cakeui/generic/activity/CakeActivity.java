@@ -10,8 +10,8 @@ import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuItem;
 import com.actionbarsherlock.view.MenuItem.OnMenuItemClickListener;
 import com.cakeui.R;
-import com.cakeui.application.CakeUIApplication;
-import com.cakeui.generic.fragment.GenericFragment;
+import com.cakeui.application.CakeApplication;
+import com.cakeui.generic.fragment.CakeFragment;
 import com.cakeui.utils.enums.PagesOpen;
 import com.cakeui.utils.CakeBroadcastReceiver;
 import com.cakeui.utils.CakeDataEncapsulation;
@@ -28,12 +28,12 @@ import com.cakeui.utils.CakeDataEncapsulation;
  *
  */
 
-public class GenericActivity extends SherlockFragmentActivity{
+public class CakeActivity extends SherlockFragmentActivity{
 
 	private ActionBar sherlockActionBar;
 	private Menu menu;
 	
-	private CakeUIApplication cakeuiApp;
+	private CakeApplication cakeApp;
 	private CakeBroadcastReceiver cakeBroadcastReceiver;
 	
 	public PagesOpen pagesOpen;
@@ -46,7 +46,7 @@ public class GenericActivity extends SherlockFragmentActivity{
 		sherlockActionBar.setDisplayHomeAsUpEnabled(true);
 		setSherlockActionBar(sherlockActionBar);
 		
-		cakeuiApp = (CakeUIApplication) getApplication();
+		cakeApp = (CakeApplication) getApplication();
 		
 		cakeBroadcastReceiver = new CakeBroadcastReceiver(this);
 		registerReceiver(cakeBroadcastReceiver, new IntentFilter(CakeBroadcastReceiver.CAKE_BROADCAST));
@@ -101,8 +101,8 @@ public class GenericActivity extends SherlockFragmentActivity{
 		this.menu = menu;
 	}
 	
-	public CakeUIApplication getCakeUIApplication(){
-		return cakeuiApp;
+	public CakeApplication getCakeApplication(){
+		return cakeApp;
 	}
 
 	public PagesOpen getPagesOpen() {
@@ -137,9 +137,9 @@ public class GenericActivity extends SherlockFragmentActivity{
 	 * @throws IllegalAccessException 
 	 * @throws InstantiationException 
 	 */
-	public void addFragmentToScreen(int containerViewId, int fragmentID, Class<? extends GenericFragment> fragmentClass, boolean mainFragment) throws InstantiationException, IllegalAccessException {
+	public void addFragmentToScreen(int containerViewId, int fragmentID, Class<? extends CakeFragment> fragmentClass, boolean mainFragment) throws InstantiationException, IllegalAccessException {
 
-		GenericFragment newFragment = (GenericFragment) getSupportFragmentManager().findFragmentById(fragmentID);
+		CakeFragment newFragment = (CakeFragment) getSupportFragmentManager().findFragmentById(fragmentID);
 
 		if (newFragment == null){
 			newFragment = fragmentClass.newInstance();

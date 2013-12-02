@@ -1,7 +1,7 @@
 package com.cakeui.utils;
 
 import com.cakeui.R;
-import com.cakeui.generic.activity.GenericActivity;
+import com.cakeui.generic.activity.CakeActivity;
 import com.cakeui.utils.enums.AsyncTaskType;
 
 import android.app.ProgressDialog;
@@ -10,20 +10,20 @@ import android.os.AsyncTask;
 public class CakeAsyncTask<T> extends AsyncTask<T, T, Boolean>{
 
 	private ProgressDialog dialog;
-	private GenericActivity activity;
+	private CakeActivity activity;
 	
 	private AsyncTaskType taskType;
 	
 	private int duration;
 	
-	public CakeAsyncTask(GenericActivity activity, AsyncTaskType taskType){
+	public CakeAsyncTask(CakeActivity activity, AsyncTaskType taskType){
 		this.activity = activity;
 		this.taskType = taskType;
 		
 		this.duration = 0;
 	}
 	
-	public CakeAsyncTask(GenericActivity activity, AsyncTaskType taskType, int duration){
+	public CakeAsyncTask(CakeActivity activity, AsyncTaskType taskType, int duration){
 		this.activity = activity;
 		this.taskType = taskType;
 		this.duration = duration;
@@ -59,7 +59,7 @@ public class CakeAsyncTask<T> extends AsyncTask<T, T, Boolean>{
 	@Override
 	protected void onProgressUpdate(T... values) {
 		if (taskType.equals(AsyncTaskType.LOGIN_TASK)){
-			if (activity.getCakeUIApplication().isConnectedToNetwork()){
+			if (activity.getCakeApplication().isConnectedToNetwork()){
 				dialog.setMessage(activity.getResources().getString(R.string.async_task_logging_online));
 			}else{
 				dialog.setMessage(activity.getResources().getString(R.string.async_task_logging_offline));
