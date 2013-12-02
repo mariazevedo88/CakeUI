@@ -1,9 +1,5 @@
 package com.cakeui.generic.service;
 
-import android.app.Service;
-import android.content.Intent;
-import android.os.Binder;
-import android.os.IBinder;
 
 /**
  * Class that implements a generic service that is executed periodically.
@@ -12,14 +8,15 @@ import android.os.IBinder;
  * @email caixeta.sarah@gmail.com
  *
  */
-public class CakePeriodicService extends Service implements Runnable{
+public class CakePeriodicService extends CakeService implements Runnable{
 
 	private Thread syncThread;
 	private long interval;
 	
 	@Override
-	public IBinder onBind(Intent arg0) {
-		return new CakeBinder();
+	public void onCreate() {
+		super.onCreate();
+		startThread();
 	}
 	
 	public void startThread() {
@@ -44,8 +41,6 @@ public class CakePeriodicService extends Service implements Runnable{
 		
 	}
 	
-	protected void performTask(){}
-	
 	public void setTimeInterval(long timeMillis){
 		this.interval = timeMillis;
 	}
@@ -54,17 +49,4 @@ public class CakePeriodicService extends Service implements Runnable{
 		return this.interval;
 	}
 		
-	/**
-	 * Binder used to return a instance of the service when some activity or service binds with it.
-	 * @author Sarah Caixeta
-	 */
-	public class CakeBinder extends Binder {
-		
-		public CakePeriodicService getService() {
-			
-			return CakePeriodicService.this;
-		}		
-	}
-
-
 }

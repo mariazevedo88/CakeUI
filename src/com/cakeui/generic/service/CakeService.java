@@ -27,9 +27,11 @@ public class CakeService extends Service{
 		
 	}
 	
+	/**
+	 * Method to be overrided to perform some task. Cannot make UI changes. 
+	 */
 	protected void performTask(){}
 
-		
 	/**
 	 * Binder used to return a instance of the service when some activity or service binds with it.
 	 * @author Sarah Caixeta

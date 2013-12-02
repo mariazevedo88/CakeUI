@@ -1,7 +1,14 @@
 package com.cakeui.generic.activity;
 
+import java.util.HashMap;
+
+import android.app.Service;
+import android.content.ComponentName;
+import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.ServiceConnection;
 import android.os.Bundle;
+import android.os.IBinder;
 import android.support.v4.app.FragmentTransaction;
 
 import com.actionbarsherlock.app.ActionBar;
@@ -12,9 +19,10 @@ import com.actionbarsherlock.view.MenuItem.OnMenuItemClickListener;
 import com.cakeui.R;
 import com.cakeui.application.CakeApplication;
 import com.cakeui.generic.fragment.CakeFragment;
-import com.cakeui.utils.enums.PagesOpen;
+import com.cakeui.generic.service.CakeService;
 import com.cakeui.utils.CakeBroadcastReceiver;
 import com.cakeui.utils.CakeDataEncapsulation;
+import com.cakeui.utils.enums.PagesOpen;
 
 /**
  * 
@@ -36,6 +44,8 @@ public class CakeActivity extends SherlockFragmentActivity{
 	private CakeApplication cakeApp;
 	private CakeBroadcastReceiver cakeBroadcastReceiver;
 	
+	private HashMap<CakeService, ServiceConnection> services;
+	
 	public PagesOpen pagesOpen;
 	
 	@Override
@@ -51,11 +61,16 @@ public class CakeActivity extends SherlockFragmentActivity{
 		cakeBroadcastReceiver = new CakeBroadcastReceiver(this);
 		registerReceiver(cakeBroadcastReceiver, new IntentFilter(CakeBroadcastReceiver.CAKE_BROADCAST));
 		
+		services = new HashMap<CakeService, ServiceConnection>();
+		
 	}
 	
 	@Override
 	protected void onDestroy() {
 		unregisterReceiver(cakeBroadcastReceiver);
+		for (CakeService service : services.keySet()){
+			unbindService(services.get(service));
+		}
 		super.onDestroy();
 	}
 	
@@ -179,6 +194,30 @@ public class CakeActivity extends SherlockFragmentActivity{
 			}
 		}
 		
+	}
+	
+	public void bindToService(Class<? extends CakeService> cakeServiceClass){
+		
+		Intent serviceIntent = new Intent(this, cakeServiceClass);
+		
+		ServiceConnection serviceConnection = new ServiceConnection() {
+
+			@Override
+			public void onServiceConnected(ComponentName name, IBinder service) {
+
+				services.put(((CakeService.CakeBinder) service).getService(), this);
+
+			}
+
+			@Override
+			public void onServiceDisconnected(ComponentName name) {
+
+			}
+		};
+
+		startService(serviceIntent);
+		
+		bindService(serviceIntent, serviceConnection, 0);
 	}
 	
 }
