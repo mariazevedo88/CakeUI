@@ -59,7 +59,7 @@ public class CakeAsyncTask<T> extends AsyncTask<T, T, Boolean>{
 	@Override
 	protected void onProgressUpdate(T... values) {
 		if (taskType.equals(AsyncTaskType.LOGIN_TASK)){
-			if (activity.getCakeUIApplication().isConnectedToNetwork()){
+			if (activity.getCakeApplication().isConnectedToNetwork()){
 				dialog.setMessage(activity.getResources().getString(R.string.async_task_logging_online));
 			}else{
 				dialog.setMessage(activity.getResources().getString(R.string.async_task_logging_offline));

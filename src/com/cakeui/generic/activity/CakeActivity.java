@@ -33,7 +33,7 @@ public class CakeActivity extends SherlockFragmentActivity{
 	private ActionBar sherlockActionBar;
 	private Menu menu;
 	
-	private CakeApplication cakeuiApp;
+	private CakeApplication cakeApp;
 	private CakeBroadcastReceiver cakeBroadcastReceiver;
 	
 	public PagesOpen pagesOpen;
@@ -46,7 +46,7 @@ public class CakeActivity extends SherlockFragmentActivity{
 		sherlockActionBar.setDisplayHomeAsUpEnabled(true);
 		setSherlockActionBar(sherlockActionBar);
 		
-		cakeuiApp = (CakeApplication) getApplication();
+		cakeApp = (CakeApplication) getApplication();
 		
 		cakeBroadcastReceiver = new CakeBroadcastReceiver(this);
 		registerReceiver(cakeBroadcastReceiver, new IntentFilter(CakeBroadcastReceiver.CAKE_BROADCAST));
@@ -101,8 +101,8 @@ public class CakeActivity extends SherlockFragmentActivity{
 		this.menu = menu;
 	}
 	
-	public CakeApplication getCakeUIApplication(){
-		return cakeuiApp;
+	public CakeApplication getCakeApplication(){
+		return cakeApp;
 	}
 
 	public PagesOpen getPagesOpen() {

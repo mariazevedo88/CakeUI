@@ -14,7 +14,7 @@ import android.widget.TextView;
 public class CakeListViewAdapter<T> extends BaseAdapter{
 
 	private Context context;
-	List<T> listViewItems;
+	private List<T> listViewItems;
 	
 	public CakeListViewAdapter(Context context, List<T> listViewItems){
 		this.context = context;
