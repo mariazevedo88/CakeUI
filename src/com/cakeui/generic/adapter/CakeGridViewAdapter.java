@@ -11,13 +11,13 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-public class GenericGridViewAdapter extends BaseAdapter{
+public class CakeGridViewAdapter extends BaseAdapter{
 
 	private Context context;
 	private List<Integer> itemsIconsArray;
 	private List<String>  itemsNamesArray;
 	
-	public GenericGridViewAdapter(Context context, List<Integer> itemsIconsArray, List<String> itemsNamesArray) {
+	public CakeGridViewAdapter(Context context, List<Integer> itemsIconsArray, List<String> itemsNamesArray) {
 		this.context = context;
 		this.itemsIconsArray = itemsIconsArray;
 		this.itemsNamesArray = itemsNamesArray;

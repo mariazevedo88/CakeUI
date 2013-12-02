@@ -12,12 +12,12 @@ import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
 import android.widget.TextView;
 
-public class GenericExpandableListViewAdapter<T> extends BaseExpandableListAdapter{
+public class CakeExpandableListViewAdapter<T> extends BaseExpandableListAdapter{
 
 	private Context context;
 	private CakeMap<T, List<T>> expandableListViewItems;
 	
-	public GenericExpandableListViewAdapter(Context context, CakeMap<T, List<T>> expandableListViewItems){
+	public CakeExpandableListViewAdapter(Context context, CakeMap<T, List<T>> expandableListViewItems){
 		this.context = context;
 		this.expandableListViewItems = expandableListViewItems;
 		

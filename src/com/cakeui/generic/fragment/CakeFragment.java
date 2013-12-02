@@ -7,7 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.actionbarsherlock.app.SherlockFragment;
-import com.cakeui.generic.activity.GenericActivity;
+import com.cakeui.generic.activity.CakeActivity;
 
 /**
  * 
@@ -21,14 +21,14 @@ import com.cakeui.generic.activity.GenericActivity;
  * Class that implements a generic fragment.
  */
 
-public class GenericFragment extends SherlockFragment{
+public class CakeFragment extends SherlockFragment{
 
 	private String previousFragmentTag;
 	private String mainFragmentTag;
 	
 	private boolean mainFragment;
 
-	public GenericFragment(){}
+	public CakeFragment(){}
 	
 	@Override
 	public void setArguments(Bundle args) {
@@ -104,7 +104,7 @@ public class GenericFragment extends SherlockFragment{
 	 * @throws IllegalAccessException 
 	 * @throws java.lang.InstantiationException 
 	 */
-	protected void addFragment(int containerViewID, int fragmentID, Class<? extends GenericFragment> newFragment, boolean mainFragment) throws java.lang.InstantiationException, IllegalAccessException{
-		((GenericActivity) this.getActivity()).addFragmentToScreen(containerViewID, fragmentID, newFragment, mainFragment);
+	protected void addFragment(int containerViewID, int fragmentID, Class<? extends CakeFragment> newFragment, boolean mainFragment) throws java.lang.InstantiationException, IllegalAccessException{
+		((CakeActivity) this.getActivity()).addFragmentToScreen(containerViewID, fragmentID, newFragment, mainFragment);
 	}
 }

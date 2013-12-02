@@ -11,12 +11,12 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-public class GenericListViewAdapter<T> extends BaseAdapter{
+public class CakeListViewAdapter<T> extends BaseAdapter{
 
 	private Context context;
-	List<T> listViewItems;
+	private List<T> listViewItems;
 	
-	public GenericListViewAdapter(Context context, List<T> listViewItems){
+	public CakeListViewAdapter(Context context, List<T> listViewItems){
 		this.context = context;
 		this.listViewItems = listViewItems;
 	}

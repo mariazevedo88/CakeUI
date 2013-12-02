@@ -1,6 +1,6 @@
 package com.cakeui.utils;
 
-import com.cakeui.generic.activity.GenericActivity;
+import com.cakeui.generic.activity.CakeActivity;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -19,9 +19,9 @@ public class CakeBroadcastReceiver extends BroadcastReceiver{
 	public static final String CAKE_BROADCAST = "com.cakeui.broadcast.receiver";
 	public static final String CAKE_BROADCAST_DATA = "cakeui.broadcast.receiver.data";
 	
-	private GenericActivity activity;
+	private CakeActivity activity;
 	
-	public CakeBroadcastReceiver (GenericActivity activity){
+	public CakeBroadcastReceiver (CakeActivity activity){
 		this.activity = activity;
 	}
 	
