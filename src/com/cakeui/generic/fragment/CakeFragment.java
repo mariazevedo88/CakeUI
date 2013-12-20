@@ -18,7 +18,7 @@ import com.cakeui.generic.activity.CakeActivity;
  * @email caixeta.sarah@gmail.com
  *
  *
- * Class that implements a generic fragment.
+ * Class that implements a generic Fragment.
  */
 
 public class CakeFragment extends SherlockFragment{

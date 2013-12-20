@@ -11,6 +11,16 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+/**
+ * 
+ * @author Mariana Azevedo
+ * @email mariana@bsi.ufla.br
+ * 
+ * 
+ * Class that implements a generic ListView Adapter.
+ *
+ */
+
 public class CakeListViewAdapter<T> extends BaseAdapter{
 
 	private Context context;
@@ -48,7 +58,7 @@ public class CakeListViewAdapter<T> extends BaseAdapter{
 			
 			viewHolder = new ViewHolder();
 			
-			viewHolder.itemsContentTextView = (TextView) convertView.findViewById(R.id.list_TextView);
+			viewHolder.itemsContentTextView = (TextView) convertView.findViewById(R.id.listViewItem);
 			convertView.setTag(viewHolder);
 			
 		}else{

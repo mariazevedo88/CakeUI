@@ -31,7 +31,7 @@ import com.cakeui.utils.enums.PagesOpen;
  * @author Sarah Caixeta
  * @email caixeta.sarah@gmail.com
  * 
- * Class that implements a generic activity.
+ * Class that implements a generic Activity.
  *
  */
 
