@@ -4,6 +4,18 @@ import android.app.Application;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 
+/**
+ * 
+ * @author Mariana Azevedo
+ * @email mariana@bsi.ufla.br
+ * 
+ * @author Sarah Caixeta
+ * @email caixeta.sarah@gmail.com
+ * 
+ * Class that implements a generic Application.
+ *
+ */
+
 public class CakeApplication extends Application{
 
 	private static CakeApplication instance;

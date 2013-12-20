@@ -4,6 +4,18 @@ import java.util.Iterator;
 import java.util.Set;
 import java.util.TreeMap;
 
+/**
+ * 
+ * @author Mariana Azevedo
+ * @email mariana@bsi.ufla.br
+ * 
+ * @author Sarah Caixeta
+ * @email caixeta.sarah@gmail.com
+ * 
+ * Class that implements a generic TreeMap.
+ *
+ */
+
 public class CakeMap<T, E> extends TreeMap<T, E> {
 
 	/**

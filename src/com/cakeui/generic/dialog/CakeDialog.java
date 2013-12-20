@@ -17,11 +17,11 @@ import com.cakeui.utils.enums.DialogType;
 import com.cakeui.utils.enums.PagesOpen;
 
 /**
- * Class that implements generic dialogs. 
  * 
  * @author Mariana Azevedo
  * @email mariana@bsi.ufla.br
  *
+ * Class that implements generic SherlockDialogFragment dialogs. 
  */
 
 public class CakeDialog extends SherlockDialogFragment{

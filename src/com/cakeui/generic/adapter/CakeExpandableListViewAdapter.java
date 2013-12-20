@@ -12,6 +12,16 @@ import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
 import android.widget.TextView;
 
+/**
+ * 
+ * @author Mariana Azevedo
+ * @email mariana@bsi.ufla.br
+ * 
+ * 
+ * Class that implements a generic ExpandableListView Adapter.
+ *
+ */
+
 public class CakeExpandableListViewAdapter<T> extends BaseExpandableListAdapter{
 
 	private Context context;

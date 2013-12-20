@@ -7,6 +7,14 @@ import com.cakeui.utils.enums.AsyncTaskType;
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
 
+/**
+ * 
+ * @author Mariana Azevedo
+ * @email mariana@bsi.ufla.br
+ *
+ * Class that implements generic AsyncTask. 
+ */
+
 public class CakeAsyncTask<T> extends AsyncTask<T, T, Boolean>{
 
 	private ProgressDialog dialog;

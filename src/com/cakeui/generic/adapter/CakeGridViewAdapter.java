@@ -11,6 +11,16 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+/**
+ * 
+ * @author Mariana Azevedo
+ * @email mariana@bsi.ufla.br
+ * 
+ * 
+ * Class that implements a generic GridView Adapter.
+ *
+ */
+
 public class CakeGridViewAdapter extends BaseAdapter{
 
 	private Context context;
@@ -50,7 +60,7 @@ public class CakeGridViewAdapter extends BaseAdapter{
 			
 			viewHolder = new ViewHolder();
 			
-			viewHolder.itemsNamesTextView = (TextView) convertView.findViewById(R.id.grid_TextView);
+			viewHolder.itemsNamesTextView = (TextView) convertView.findViewById(R.id.gridViewItem);
 			convertView.setTag(viewHolder);
 			
 		}else{
