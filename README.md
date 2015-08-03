@@ -13,7 +13,7 @@ Sarah Caixeta (caixeta.sarah@gmail.com)
 This is a framework created to bootstrap Android development.
 We have included on the framework's architecture, generic implementations 
 of the most Android App Components to help developers of all levels 
-(beginners and advanced) to create Android applications in a easily and quickly.
+(beginners and advanced) to create Android applications easily and quickly.
 This framework also uses, as dependency library, the ActionBarSherlock library 
 to customize the ActionBar component.
 
